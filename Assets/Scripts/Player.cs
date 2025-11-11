@@ -31,7 +31,9 @@ public class Player : MonoBehaviour
         body2D = GetComponent<Rigidbody2D>();
         renderer2D = GetComponent<SpriteRenderer>();
         controller = GetComponent<PlayerController>();
+        animator = GetComponent<Animator>();
         audioData = GetComponent<AudioSource>();
+
         
     }
 
@@ -65,6 +67,7 @@ public class Player : MonoBehaviour
 
                 
             }
+            
         }
         else
         {
