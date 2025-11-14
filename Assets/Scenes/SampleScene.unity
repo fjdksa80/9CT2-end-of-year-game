@@ -131,7 +131,6 @@ GameObject:
   - component: {fileID: 59616915}
   - component: {fileID: 59616914}
   - component: {fileID: 59616913}
-  - component: {fileID: 59616911}
   - component: {fileID: 59616917}
   m_Layer: 0
   m_Name: Playurr
@@ -140,19 +139,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &59616911
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 59616910}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 10db6cf317f12c946a765ec8b2b474f4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moving: {x: 0, y: 0}
 --- !u!50 &59616913
 Rigidbody2D:
   serializedVersion: 5
@@ -168,7 +154,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDamping: 10
   m_AngularDamping: 0.05
-  m_GravityScale: 50
+  m_GravityScale: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -176,10 +162,10 @@ Rigidbody2D:
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Interpolate: 1
+  m_SleepingMode: 0
+  m_CollisionDetection: 1
+  m_Constraints: 4
 --- !u!61 &59616914
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -293,7 +279,8 @@ Transform:
   m_LocalPosition: {x: -4.7396955, y: -0.7462156, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1694649907}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &59616917
@@ -305,16 +292,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 59616910}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4803a03bcd937b64487e4e97278dbdbd, type: 3}
+  m_Script: {fileID: 11500000, guid: 60e34d068094c984280f09f4bc2a3e37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 30
-  maxVelocity: {x: 60, y: 100}
-  jetSpeed: 6000
-  standing: 0
-  standingThreshold: 4
-  airSpeedMultiplier: 0.7
-  alive: {fileID: 0}
+  rb: {fileID: 59616913}
+  groundCheck: {fileID: 1694649907}
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -479,7 +464,7 @@ GameObject:
   - component: {fileID: 546006070}
   - component: {fileID: 546006069}
   - component: {fileID: 546006068}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Ground (1)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -725,7 +710,7 @@ GameObject:
   - component: {fileID: 661259602}
   - component: {fileID: 661259601}
   - component: {fileID: 661259600}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Square (2)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -887,7 +872,7 @@ GameObject:
   - component: {fileID: 762509644}
   - component: {fileID: 762509643}
   - component: {fileID: 762509642}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Square (1)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -1037,6 +1022,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1694649906
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1694649907}
+  m_Layer: 0
+  m_Name: Ground Check
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1694649907
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1694649906}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 59616916}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1932549022
 GameObject:
   m_ObjectHideFlags: 0
@@ -1049,7 +1065,7 @@ GameObject:
   - component: {fileID: 1932549023}
   - component: {fileID: 1932549026}
   - component: {fileID: 1932549025}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Square
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -1211,7 +1227,7 @@ GameObject:
   - component: {fileID: 1938611525}
   - component: {fileID: 1938611528}
   - component: {fileID: 1938611527}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Ground
   m_TagString: Ground
   m_Icon: {fileID: 0}
