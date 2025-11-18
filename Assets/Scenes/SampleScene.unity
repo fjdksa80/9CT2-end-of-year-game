@@ -152,9 +152,9 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDamping: 10
+  m_LinearDamping: 0
   m_AngularDamping: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -292,9 +292,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 59616910}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 60e34d068094c984280f09f4bc2a3e37, type: 3}
+  m_Script: {fileID: 11500000, guid: d42452762893d454c8cdb9635b2bdacd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 8
+  jumpSpeed: 16
   rb: {fileID: 59616913}
   groundCheck: {fileID: 1694649907}
   groundLayer:
