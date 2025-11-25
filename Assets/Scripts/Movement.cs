@@ -24,7 +24,7 @@ public class Movement : MonoBehaviour
         velocityX += horizontal*speed;
         velocityX *= 0.9f;
         velocityY += -1;
-        if(isGrounded())
+        if (isGrounded())
         {
             velocityY = 0;
         }
