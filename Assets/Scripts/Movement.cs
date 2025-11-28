@@ -23,16 +23,20 @@ public class Movement : MonoBehaviour
         horizontal = Input.GetAxisRaw("Horizontal");
         velocityX += horizontal*speed;
         velocityX *= 0.9f;
-        velocityY += -1;
+        velocityY += -0.1f;
         if (isGrounded())
         {
-            velocityY = 0;
+            if (Input.GetButtonDown("Jump"))
+            {
+            velocityY = jumpSpeed;
+            }
+            else
+            {
+                velocityY = 0f;
+            }
         }
 
-        if (Input.GetButtonDown("Jump"))
-        {
-            velocityY = jumpSpeed;
-        }
+        
         Debug.Log(velocityY);
     }
 
