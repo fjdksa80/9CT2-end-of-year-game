@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 public class Movement : MonoBehaviour
 {
@@ -24,17 +25,7 @@ public class Movement : MonoBehaviour
         velocityX += horizontal*speed;
         velocityX *= 0.9f;
         velocityY += -0.1f;
-        if (isGrounded())
-        {
-            if (Input.GetButtonDown("Jump"))
-            {
-            velocityY = jumpSpeed;
-            }
-            else
-            {
-                velocityY = 0f;
-            }
-        }
+
 
         
         Debug.Log(velocityY);
@@ -45,8 +36,15 @@ public class Movement : MonoBehaviour
         rb.linearVelocity = new Vector2(velocityX,velocityY);
     }
 
-    private bool isGrounded()
+    void OnCollisionEnter2D(Collision2D collision) //Function to enable jumping again after landing.
     {
-        return Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            if (Input.GetButtonDown("Jump"))
+            {
+            velocityY = jumpSpeed;
+            }
+
+        }
     }
 }
