@@ -25,10 +25,16 @@ public class Movement : MonoBehaviour
         velocityX += horizontal*speed;
         velocityX *= 0.9f;
         velocityY += -0.1f;
-
-
-        
-        Debug.Log(velocityY);
+        if(isGrounded())
+        {
+            velocityY = 0f;
+        }
+        if(Input.GetButtonDown("Jump") && isGrounded())
+        {
+            transform.position = new Vector2(transform.position.x, transform.position.y+0.01f);
+            velocityY = jumpSpeed;
+        }
+        Debug.Log(isGrounded());
     }
 
     private void FixedUpdate()
@@ -36,15 +42,8 @@ public class Movement : MonoBehaviour
         rb.linearVelocity = new Vector2(velocityX,velocityY);
     }
 
-    void OnCollisionEnter2D(Collision2D collision) //Function to enable jumping again after landing.
+    private bool isGrounded()
     {
-        if (collision.gameObject.CompareTag("Ground"))
-        {
-            if (Input.GetButtonDown("Jump"))
-            {
-            velocityY = jumpSpeed;
-            }
-
-        }
+        return Physics2D.OverlapCircle(groundCheck.position, 0.01f, groundLayer);
     }
 }
