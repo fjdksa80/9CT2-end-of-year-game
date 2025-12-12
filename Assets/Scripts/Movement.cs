@@ -4,7 +4,7 @@ using System.Collections.Generic;
 public class Movement : MonoBehaviour
 {
     private float velocityX;
-    private float velocityY;
+    public float velocityY;
     public float speed = 8f;
     public float jumpSpeed = 16f;
     private float horizontal;
